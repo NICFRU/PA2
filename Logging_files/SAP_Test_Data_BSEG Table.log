@@ -1,0 +1,48 @@
+--------------------------------------------------------------------------------
+Processing: "SAP_Test_Data_BSEG Table.XLSX"
+IS a XLSX file needs first to converted to CSV
+Use/created csv file for processing
+End Processing: "SAP_Test_Data_BSEG Table.XLSX"
+Start Processing: "SAP_Test_Data_BSEG Table.csv"
+Number of seperations: 367
+Finished: "SAP_Test_Data_BSEG Table.csv"
+Statistics:	Processed lines:	5000	skipped lines:	0	replaced BOM:	0	replaced ":0	replaced "00" bytes:	0	skipped values #N/A:	0	skipped values #DIV/0!:	0	header found:	yes
+
+
+=============== Statistics ===============
+Total processed files: 	1
+Processed lines:	5000
+Total skipped lines: 0
+Total replaced -1.#IND:  0
+Total replaced 1.#QNAN:  0
+Total replaced 1.#IND:  0
+Total replaced -1.#QNAN:  0
+Total replaced #N/A N/A:  0
+Total skipped  #N/A:  0
+Total replaced N/A:  0
+Total replaced n/a:  0
+Total replaced NA:  0
+Total replaced #NA:  0
+Total replaced NULL:  0
+Total replaced null:  0
+Total replaced NaN:  0
+Total replaced -NaN:  0
+Total replaced nan:  0
+Total replaced -nan:  0
+Total skipped  #VALUE!:  0
+Total skipped  #DIV/0!:  0
+Total replaced 00:  0
+replaced BOM:	0
+Number of lines in the TXT File after the header: 5000
+Number of elements in the processed file: 5000
+Total replaced ": 0
+Deleted lines : []
+End of logging the file, without problems: "SAP_Test_Data_BSEG Table.csv"
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+created SQL File SAP_Test_Data_BSEG Table.sql
+---------------------------------------------------------------------------
+
+

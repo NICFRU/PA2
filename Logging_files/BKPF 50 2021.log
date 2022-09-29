@@ -1,0 +1,44 @@
+---------------------------------------------------------------------------
+Processing: "BKPF 50 2021.txt"
+Number of seperations: 37
+Finished: "BKPF 50 2021.txt"
+Statistics:	Processed lines:	30414	skipped lines:	4	replaced BOM:	0	replaced ":0	replaced "00" bytes:	0	skipped values #N/A:	0	skipped values #DIV/0!:	0	header found:	yes
+
+
+=============== Statistics ===============
+Total processed files: 	1
+Processed lines:	30414
+Total skipped lines: 4
+Total replaced -1.#IND:  0
+Total replaced 1.#QNAN:  0
+Total replaced 1.#IND:  0
+Total replaced -1.#QNAN:  0
+Total replaced #N/A N/A:  0
+Total skipped  #N/A:  0
+Total replaced N/A:  0
+Total replaced n/a:  0
+Total replaced NA:  0
+Total replaced #NA:  0
+Total replaced NULL:  0
+Total replaced null:  0
+Total replaced NaN:  0
+Total replaced -NaN:  0
+Total replaced nan:  0
+Total replaced -nan:  0
+Total skipped  #VALUE!:  0
+Total skipped  #DIV/0!:  0
+Total replaced 00:  0
+replaced BOM:	0
+Number of lines in the TXT File after the header: 30418
+Number of elements in the processed file: 30414
+Total replaced ": 0
+Deleted lines : [1, 30412, 30414]
+End of logging the file, without problems: "BKPF 50 2021.txt"
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+created SQL File BKPF 50 2021.txt_processed
+---------------------------------------------------------------------------
+
+
