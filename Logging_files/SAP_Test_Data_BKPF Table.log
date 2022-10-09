@@ -1,3 +1,4 @@
+Start of overall process: SAP_Test_Data_BKPF Table
 --------------------------------------------------------------------------------
 Processing: "SAP_Test_Data_BKPF Table.XLSX"
 IS a XLSX file needs first to converted to CSV
@@ -38,6 +39,7 @@ Number of elements in the processed file: 2500
 Total replaced ": 0
 Deleted lines : []
 End of logging the file, without problems: "SAP_Test_Data_BKPF Table.csv"
+Duration of "SAP_Test_Data_BKPF Table.csv" for processsing: 1.0814963000000002 seconds
 ---------------------------------------------------------------------------
 
 
@@ -46,3 +48,4 @@ created SQL File SAP_Test_Data_BKPF Table.sql
 ---------------------------------------------------------------------------
 
 
+Duration of "SAP_Test_Data_BKPF Table" for processsing: 1.6566436999999998 seconds

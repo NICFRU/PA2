@@ -52,7 +52,7 @@ replace_double_quotes=1                     #to replace the inverted comma '"' g
 null_values=['#VALUE!', '#DIV/0!','#N/A']   #to replace values which represent a empty value globally, counts the number of replacements
 skiped_values=['#VALUE!', '#DIV/0!','#N/A'] # counts globally the number of skipped elements
 
-
+app_folder='apps'
 #----------------------------------------------------------------------for create_SQL_file.py--------------------------------------------------------------------#
 sql_folder='sql_files'                     # folder where the SQL are saved               
 database = "[DU00545_Worx_SRC]"             # Database Name 
@@ -80,6 +80,8 @@ import modules.overall_funktions as f
 import logging
 import logging.config
 import os
+from time import perf_counter
+import modules.create_app_for_files as caff
 
 
 
@@ -143,9 +145,13 @@ xlsx=0
 #executes the funktions for multiple files
 if files==1:
     for file in c.get_file_name(filename=file_extension):
-        logging_file_name=loggingfilepath+'\\'+file.split('.')[0] + '.log'
+        filedefinition=file.split('.')[0]
+        logging_file_name=loggingfilepath+'\\'+ filedefinition+ '.log'
         pathnew=folder_data+f'\\{file}'
         deflogger(logging_file_name)
+        logger.info(f'Start of overall process: {filedefinition}')
+        start=perf_counter()
+        
         if 'XLSX' in pathnew.upper():
             pathnew=f.XLSX_to_csv(pathnew)
             file=file.replace('XLSX', 'csv')
@@ -153,15 +159,25 @@ if files==1:
         error=c.transform_into_csv(pathnew, c.line_count(pathnew,separator=sepertator,encoding=encoding), endencoding=end_encoding, separator=sepertator, seper=new_separator, encode=encoding, new_format='txt_processed',withheader=withheader,header=header,quotechar=text_qualifier,replace_double_quotes=replace_double_quotes,replace_new_separator=replace_separator,logging_file_name=logging_file_name,processedfoldername=processedfoldername,null_values=null_values,skiped_values=skiped_values,xlsx=xlsx)
         file=file.split('.')[0] + '.' + new_format.split('.')[len(new_format.split('.'))-1]
         print(error)
+        caff.app_generator(author,processedfoldername,file,app_folder)
         if error==0:
             trysql(author,folder_processed ,encoding,file,database,importSchema,prepareSchema,charset,new_separator,linebreak,firstline,codepage,batchsize,sql_folder)
+            end = perf_counter()
+            duration=end - start
+            logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
         else:
+            end = perf_counter()
+            duration=end - start
+            logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
             pass
 ### for individual files 
 else:
-    logging_file_name=loggingfilepath+'\\'+file.split('.')[0] + '.log'
+    filedefinition=file.split('.')[0]
+    logging_file_name=loggingfilepath+'\\'+filedefinition + '.log'
     pathnew=folder_data+f'\\{file}'
     deflogger(logging_file_name)
+    logger.info(f'Start of overall process: {file}')
+    start=perf_counter()
     if 'XLSX' in pathnew.upper():
         pathnew=f.XLSX_to_csv(pathnew)
         file=file.replace('XLSX', 'csv')
@@ -171,5 +187,11 @@ else:
     print(error)
     if error==0:
         trysql(author,folder_processed ,encoding,file,database,importSchema,prepareSchema,charset,new_separator,linebreak,firstline,codepage,batchsize,sql_folder)
+        end = perf_counter()
+        duration=end - start
+        logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
     else:
+        end = perf_counter()
+        duration=end - start
+        logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
         pass
