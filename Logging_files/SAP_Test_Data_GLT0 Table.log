@@ -39,13 +39,35 @@ Number of elements in the processed file: 990
 Total replaced ": 0
 Deleted lines : []
 End of logging the file, without problems: "SAP_Test_Data_GLT0 Table.csv"
-Duration of "SAP_Test_Data_GLT0 Table.csv" for processsing: 0.6647475999999983 seconds
+Duration of "SAP_Test_Data_GLT0 Table.csv" for processsing: 0.5360471999999987 seconds
 ---------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------
+
+created individual APP File SAP_Test_Data_GLT0 Table.txt_processed
+End of individual APP File SAP_Test_Data_GLT0 Table.txt_processed creation with the needed time: 0.0010688999999999282 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created collection of APP Files
+
+End of collection of APP Files creation with the needed time: 0.0011605999999986238 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
 created SQL File SAP_Test_Data_GLT0 Table.sql
 ---------------------------------------------------------------------------
 
 
-Duration of "SAP_Test_Data_GLT0 Table" for processsing: 1.0152791999999984 seconds
+
+
+Duration of "SAP_Test_Data_GLT0 Table" SQL Creation: 0.007246399999999653 seconds
+
+Duration of "SAP_Test_Data_GLT0 Table" for processsing: 0.8575342999999993 seconds

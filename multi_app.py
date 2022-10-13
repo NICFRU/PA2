@@ -1,34 +1,35 @@
-#!/user/bin/env python
+#/*******************************************
+#***
+#***
+#*** Author:	Niclas Cramer
+#*** Date:	  11 Oct 2022 22:03:09
+#***
+#*** Source:	C:\Users\Niclas\Development\PA2\Tool_Niclas_23.06.2022 (1)\multi_app.py
+#***
+#*** Topic:	Automatically generated app script.
+#***
+#***
+#*******************************************/
+
+#/******************************************/
+#/***              Imports		    	    ***/
+#/******************************************/
 
 from spyre.server import Site, App
-import os
-
-def app_files(filename='.py'):
-    name_list = []
-    cwd = os.getcwd()
-    cwd=f'{cwd}\\apps'
-    for root, dirs, files in os.walk(cwd):
-        for file in files:
-            if file.endswith(filename):
-                name_list.append(file)
-    return name_list
-
-import apps
-#from stocks_example import StockExample
-#from image_editor import ImageEditor
-
+from apps.app_overview import overview
+from apps.app_SAP_Test_Data_BKPF_Table import SAP_Test_Data_BKPF_Table
+from apps.app_SAP_Test_Data_BSEG_Table import SAP_Test_Data_BSEG_Table
+from apps.app_SAP_Test_Data_GLT0_Table import SAP_Test_Data_GLT0_Table
+#/******************************************/
+#/***              App Cration		    ***/
+#/******************************************/
 
 class Index(App):
-    def getHTML(self, params):
-        return "Title Page Here"
+	def getHTML(self, params):
+		return "All Apps"
 
-
-site = Site(Allgemein_overview)
-for app in app_files():
-
-    from stocks_example import StockExample
-#site.addApp(StockExample, '/app2')
-#site.addApp(ImageEditor, '/app2/app3')
-
-
+site = Site(overview)
+site.addApp(SAP_Test_Data_BKPF_Table, '/app_SAP_Test_Data_BKPF_Table')
+site.addApp(SAP_Test_Data_BSEG_Table, '/app_SAP_Test_Data_BSEG_Table')
+site.addApp(SAP_Test_Data_GLT0_Table, '/app_SAP_Test_Data_GLT0_Table')
 site.launch(port=8082)

@@ -23,7 +23,7 @@ from bokeh.models import ColumnDataSource,HoverTool
 server.include_df_index = True
 
 
-class Allgemein_overview(server.App):
+class overview(server.App):
     title = "Overview of the Table"
 
     inputs = [{
@@ -143,7 +143,7 @@ class Allgemein_overview(server.App):
         data_fix = pd.Series(studentDict).reset_index(
             name='value').rename(columns={'index': 'country'})
         data_fix['angle'] = data_fix['value']/data_fix['value'].sum() * 2*pi
-        data_fix['color'] = ['#35B778', '#a1dab4']
+        data_fix['color'] = ["#595959","#85BC22"]
         if data_fix['value'][0]==1:
             data_fix['perc']=[0,100]
         elif data_fix['value'][1]==1:
@@ -224,7 +224,7 @@ class Allgemein_overview(server.App):
         p.title.align = "center"
         p.title.text_font_size = "15px"
         p.xaxis.major_label_orientation = "vertical"
-        p.vbar(x = dodge('langs',  0, range=p.x_range), top='unique', width = 0.5,name='unique',source=source,color ='#35B778')
+        p.vbar(x = dodge('langs',  0, range=p.x_range), top='unique', width = 0.5,name='unique',source=source,color ='#85BC22')
         hover = HoverTool()
         hover.tooltips = """
         <div>
@@ -256,7 +256,7 @@ class Allgemein_overview(server.App):
         p.title.align = "center"
         p.title.text_font_size = "15px"
         p.xaxis.major_label_orientation = "vertical"
-        p.vbar(x = dodge('langs',  0, range=p.x_range), top='unique', width = 0.5,name='unique',source=source,color ='#35B778')
+        p.vbar(x = dodge('langs',  0, range=p.x_range), top='unique', width = 0.5,name='unique',source=source,color ='#85BC22')
         hover = HoverTool()
         hover.tooltips = """
         <div>
@@ -303,5 +303,5 @@ class Allgemein_overview(server.App):
         html = '<center>'+html+'</center>'
         return html
 if __name__ == '__main__':
-    app = Allgemein_overview()
+    app = overview()
     app.launch(port=8070)

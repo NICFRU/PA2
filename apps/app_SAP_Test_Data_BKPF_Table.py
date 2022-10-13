@@ -2,7 +2,7 @@
 #***
 #***
 #*** Author:	Niclas Cramer
-#*** Date:	  09 Oct 2022 21:58:36
+#*** Date:	  11 Oct 2022 22:02:55
 #***
 #*** Source:	processed\SAP_Test_Data_BKPF Table.txt_processed
 #***
@@ -74,7 +74,7 @@ class SAP_Test_Data_BKPF_Table(server.App):
 		studentDict = dict(zip(data.index.astype(str), data[value]))
 		data_fix = pd.Series(studentDict).reset_index(name="value").rename(columns={"index": "country"})
 		data_fix["angle"] = data_fix["value"]/data_fix["value"].sum() * 2*pi
-		data_fix["color"] = ["#35B778","#a1dab4"]
+		data_fix["color"] = ["#595959","#85BC22"]
 		if data_fix["value"][0]==1:
 			data_fix["perc"]=[0,100]
 		elif data_fix["value"][1]==1:
@@ -110,7 +110,7 @@ class SAP_Test_Data_BKPF_Table(server.App):
 		p.title.align = "center"
 		p.title.text_font_size = "15px"
 		p.xaxis.major_label_orientation = "vertical"
-		p.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#35B778")
+		p.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#85BC22")
 		hover = HoverTool()
 		hover.tooltips = """<div><div><strong>Element:  </strong>@langs</div><div><strong>Count: </strong>@$name</div></div>"""
 		p.add_tools(hover)

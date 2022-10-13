@@ -156,7 +156,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tstudentDict = dict(zip(data.index.astype(str), data[value]))\n')
     fp.write('\t\tdata_fix = pd.Series(studentDict).reset_index(name="value").rename(columns={"index": "country"})\n')
     fp.write('\t\tdata_fix["angle"] = data_fix["value"]/data_fix["value"].sum() * 2*pi\n')
-    fp.write('\t\tdata_fix["color"] = ["#35B778","#a1dab4"]\n')
+    fp.write('\t\tdata_fix["color"] = ["#595959","#85BC22"]\n')
 
     fp.write('\t\tif data_fix["value"][0]==1:\n')
     fp.write('\t\t\tdata_fix["perc"]=[0,100]\n')
@@ -201,7 +201,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.title.align = "center"\n')
     fp.write('\t\tp.title.text_font_size = "15px"\n')
     fp.write('\t\tp.xaxis.major_label_orientation = "vertical"\n')
-    fp.write('\t\tp.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#35B778")\n')
+    fp.write('\t\tp.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#85BC22")\n')
     fp.write('\t\thover = HoverTool()\n')
 
     fp.write('\t\thover.tooltips = """<div><div><strong>Element:  </strong>@langs</div><div><strong>Count: </strong>@$name</div></div>"""\n')

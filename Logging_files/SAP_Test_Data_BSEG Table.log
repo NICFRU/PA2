@@ -39,13 +39,35 @@ Number of elements in the processed file: 5000
 Total replaced ": 0
 Deleted lines : []
 End of logging the file, without problems: "SAP_Test_Data_BSEG Table.csv"
-Duration of "SAP_Test_Data_BSEG Table.csv" for processsing: 6.175057399999998 seconds
+Duration of "SAP_Test_Data_BSEG Table.csv" for processsing: 5.873423500000001 seconds
 ---------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------
+
+created individual APP File SAP_Test_Data_BSEG Table.txt_processed
+End of individual APP File SAP_Test_Data_BSEG Table.txt_processed creation with the needed time: 0.0011942000000004782 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created collection of APP Files
+
+End of collection of APP Files creation with the needed time: 0.001213199999998693 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
 created SQL File SAP_Test_Data_BSEG Table.sql
 ---------------------------------------------------------------------------
 
 
-Duration of "SAP_Test_Data_BSEG Table" for processsing: 14.604539100000002 seconds
+
+
+Duration of "SAP_Test_Data_BSEG Table" SQL Creation: 0.011855899999998698 seconds
+
+Duration of "SAP_Test_Data_BSEG Table" for processsing: 13.8786862 seconds

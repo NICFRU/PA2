@@ -2,7 +2,7 @@
 ***
 ***
 *** Author:	Niclas Cramer
-*** Date:	  09 Oct 2022 21:58:52
+*** Date:	  11 Oct 2022 22:03:09
 ***
 *** Source:	C:\Users\Niclas\Development\PA2\Tool_Niclas_23.06.2022 (1)\processed\SAP_Test_Data_GLT0 Table.txt_processed
 *** Dest.:	[DU00545_Worx_SRC].import.SAP_Test_Data_GLT0 Table
