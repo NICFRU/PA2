@@ -1,0 +1,44 @@
+Start of overall process: SAP_Test_Data_GLT0_Table_for_automation
+--------------------------------------------------------------------------------
+Processing: "SAP_Test_Data_GLT0_Table_for_automation.csv"
+Number of seperations: 61
+Wrong number of seperations, in line 7 (62 instead of 61): 0|0|1|1010|2016|13600000|||EUR|S|16|0.0|0.0|0.0|0.0|127.4|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|127.4|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0||0.0|0.0|0.0|0.0|127.4|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0
+
+Wrong number of seperations, in line 38 (62 instead of 61): 0|0|1|1010|2016|TR11272100||EUR|H|16||0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|-33930|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|-33930|0.0|0.0|0.0|0.0|0.0||0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|-33930|0.0|0.0|0.0|0.0|0.0
+
+Wrong number of seperations, in line 45 (62 instead of 61): 0|0|1|1010|2017|12100001||USD|H|16|0.0|0.0|-1000000|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|-908075.52|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0||0.0|0.0|-908075.52||0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0
+
+Wrong number of seperations, in line 46 (62 instead of 61): 0|0|1|1010|2017|12100001||USD|S|16|0.0|0.0|1000000.0||0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|904101.91|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0||0.0|0.0|904101.91|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0"
+
+Wrong number of seperations, in line 98 (62 instead of 61): 0|0|1|1010|2018|21300000||USD|H||16|-1111|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|-888.8|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0||-888.8|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0|0.0
+
+=============== Statistics ===============
+Total processed files: 	1
+Processed lines:	100
+Total skipped lines: 0
+replaced BOM:	0
+End of logging the file, with problems: "SAP_Test_Data_GLT0_Table_for_automation.csv"
+Duration of "SAP_Test_Data_GLT0_Table_for_automation.csv" for processsing: 0.0028177000000013663 seconds
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed
+End of individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed creation with the needed time: 0.0011623000000007266 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created collection of APP Files
+
+End of collection of APP Files creation with the needed time: 0.0015013999999986538 seconds 
+
+---------------------------------------------------------------------------
+
+
+Duration of "SAP_Test_Data_GLT0_Table_for_automation" SQL Creation: 1.0000000010279564e-06 seconds
+
+Duration of "SAP_Test_Data_GLT0_Table_for_automation" for processsing: 0.006205000000001348 seconds

@@ -1,0 +1,69 @@
+Start of overall process: SAP_Test_Data_GLT0_Table_for_automation copy
+--------------------------------------------------------------------------------
+Processing: "SAP_Test_Data_GLT0_Table_for_automation copy.csv"
+Number of seperations: 61
+Finished: "SAP_Test_Data_GLT0_Table_for_automation copy.csv"
+Statistics:	Processed lines:	99	skipped lines:	0	replaced BOM:	0	replaced ":0	replaced "00" bytes:	0	skipped values #N/A:	0	skipped values #DIV/0!:	0	header found:	yes
+
+
+=============== Statistics ===============
+Total processed files: 	1
+Processed lines:	99
+Total skipped lines: 0
+Total replaced -1.#IND:  0
+Total replaced 1.#QNAN:  0
+Total replaced 1.#IND:  0
+Total replaced -1.#QNAN:  0
+Total replaced #N/A N/A:  0
+Total skipped  #N/A:  0
+Total replaced N/A:  0
+Total replaced n/a:  0
+Total replaced NA:  0
+Total replaced #NA:  2
+Total replaced NULL:  0
+Total replaced null:  0
+Total replaced NaN:  0
+Total replaced -NaN:  0
+Total replaced nan:  0
+Total replaced -nan:  0
+Total skipped  #VALUE!:  0
+Total skipped  #DIV/0!:  0
+Total replaced 00:  0
+replaced BOM:	0
+Number of lines in the TXT File after the header: 99
+Number of elements in the processed file: 99
+Total replaced ": 0
+Deleted lines : []
+End of logging the file, without problems: "SAP_Test_Data_GLT0_Table_for_automation copy.csv"
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy.csv" for processsing: 0.06882860000000157 seconds
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed
+End of individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed creation with the needed time: 0.001353399999999283 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created collection of APP Files
+
+End of collection of APP Files creation with the needed time: 0.001362699999999606 seconds 
+
+---------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------
+
+created SQL File SAP_Test_Data_GLT0_Table_for_automation copy.sql
+---------------------------------------------------------------------------
+
+
+
+
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" SQL Creation: 0.005559299999999823 seconds
+
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" for processsing: 0.07760509999999954 seconds

@@ -28,7 +28,7 @@ files=1                                   #the input file can be a single file (
 
 file='SAP_Test_Data_GLT0 Table.XLSX'                    # if input file is be a single file when files=0
 
-file_extension='.XLSX'                       # if input are a bunch of files that will be executed files=1
+file_extension='.csv'                       # if input are a bunch of files that will be executed files=1
 # -------------- general definitions ---------------------- # 
 
 startingfile='RawData'                      # Defines the folder where the raw data is located   

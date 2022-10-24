@@ -104,7 +104,7 @@ def app_generator(author,path,file,app_folder='apps'):
 
     fp.write('from bokeh import plotting\n')
     fp.write('from bokeh.transform import cumsum, dodge\n')
-    fp.write('from bokeh.plotting import figure\n')
+    fp.write('from bokeh.plotting import figure,save\n')
     fp.write('from bokeh.resources import CDN\n')
     fp.write('from bokeh.embed import file_html\n')
     fp.write('from bokeh.models import ColumnDataSource,HoverTool\n')
@@ -122,7 +122,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write(f'\ttitle = "Overview of the Table {name}"\n')
     fp.write(f"\tinputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]\n\n")
     
-    fp.write(f'\tcontrols = [dict(type= "button",id= "update_data",label= "get historical stock prices")]\n')
+    fp.write(f'\tcontrols = [dict(type= "button",id= "update_data",label= "reload the data")]\n')
     fp.write(f'\ttabs = ["Table","Overview_of_the_Table","Grafical_Overview"]\n')
     fp.write(f'''\toutputs = [dict(type= "table",id= "datahead",control_id= "update_data",tab= "Table",sortable=True,on_page_load= True),
         dict(type= "table",id= "description",control_id= "update_data",tab= "Overview_of_the_Table",sortable=True,on_page_load= True),
@@ -177,6 +177,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.grid.grid_line_color = None\n')
     fp.write('\t\thtml = file_html(p, CDN, "my plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
+    fp.write(f'\t\tsave(p,"{pathnew}\\picture\\description_plot_{name}.html")\n')
     fp.write('\t\treturn html\n\n')
 
 
@@ -186,6 +187,9 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\ttest=copy.copy(value)\n')
     fp.write(f'\t\tdf_string = of.data_str({name}.link)\n')
     fp.write('\t\tdf=pd.DataFrame(df_string[value].value_counts()).reset_index(drop=False)\n')
+    fp.write('\t\tnew_row = {"index":"NULL", value:df_string[value].isna().sum(),"col":"#595959"}\n')
+    fp.write('\t\tdf["col"]=["#85BC22" for x in range(len(df.index))]\n')
+    fp.write('\t\tdf = df.append(new_row, ignore_index=True)\n')
 
     fp.write('\t\tif df.empty:\n')
     fp.write('''\t\t\thtml=f"The column <b>{test}</b> is completly NULL and has no Unique Values"\n''')
@@ -194,20 +198,21 @@ def app_generator(author,path,file,app_folder='apps'):
 
 
     fp.write('\t\tlangs = df["index"].to_list()\n')
-    fp.write('\t\tdata = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list() ])\n')
+    fp.write('\t\tdata = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list(),col=df["col"].tolist() ])\n')
     fp.write('\t\tsource = ColumnDataSource(data=data)\n')
 
     fp.write('\t\tp = plotting.figure(x_range = langs, sizing_mode="stretch_both",toolbar_location=None, tools="", title="Unique values in Column")\n')
     fp.write('\t\tp.title.align = "center"\n')
     fp.write('\t\tp.title.text_font_size = "15px"\n')
     fp.write('\t\tp.xaxis.major_label_orientation = "vertical"\n')
-    fp.write('\t\tp.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#85BC22")\n')
+    fp.write('\t\tp.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,fill_color ="col",line_color="white")\n')
     fp.write('\t\thover = HoverTool()\n')
 
     fp.write('\t\thover.tooltips = """<div><div><strong>Element:  </strong>@langs</div><div><strong>Count: </strong>@$name</div></div>"""\n')
     fp.write('\t\tp.add_tools(hover)\n')
     fp.write('\t\thtml = file_html(p, CDN, "plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
+    fp.write(f'\t\tsave(p,"{pathnew}\\picture\\unique{name}.html")\n')
     fp.write('\t\treturn html\n')
 
     fp.write('if __name__ == "__main__":\n')

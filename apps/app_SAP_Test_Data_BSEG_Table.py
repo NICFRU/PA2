@@ -2,7 +2,7 @@
 #***
 #***
 #*** Author:	Niclas Cramer
-#*** Date:	  11 Oct 2022 22:03:09
+#*** Date:	  23 Oct 2022 13:47:43
 #***
 #*** Source:	processed\SAP_Test_Data_BSEG Table.txt_processed
 #***
@@ -26,7 +26,7 @@ import modules.overall_funktions as of
 
 from bokeh import plotting
 from bokeh.transform import cumsum, dodge
-from bokeh.plotting import figure
+from bokeh.plotting import figure,save
 from bokeh.resources import CDN
 from bokeh.embed import file_html
 from bokeh.models import ColumnDataSource,HoverTool
@@ -42,7 +42,7 @@ class SAP_Test_Data_BSEG_Table(server.App):
 	title = "Overview of the Table SAP_Test_Data_BSEG_Table"
 	inputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]
 
-	controls = [dict(type= "button",id= "update_data",label= "get historical stock prices")]
+	controls = [dict(type= "button",id= "update_data",label= "reload the data")]
 	tabs = ["Table","Overview_of_the_Table","Grafical_Overview"]
 	outputs = [dict(type= "table",id= "datahead",control_id= "update_data",tab= "Table",sortable=True,on_page_load= True),
         dict(type= "table",id= "description",control_id= "update_data",tab= "Overview_of_the_Table",sortable=True,on_page_load= True),
@@ -92,6 +92,7 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		p.grid.grid_line_color = None
 		html = file_html(p, CDN, "my plot")
 		html = "<center>"+html+"</center>"
+		save(p,"C:\\Users\\Niclas\\Development\\PA2\\Tool_Niclas_23.06.2022 (1)\\processed\\SAP_Test_Data_BSEG Table.txt_processed\picture\description_plot_SAP_Test_Data_BSEG_Table.html")
 		return html
 
 	def unique(self, params):
@@ -99,23 +100,27 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		test=copy.copy(value)
 		df_string = of.data_str(SAP_Test_Data_BSEG_Table.link)
 		df=pd.DataFrame(df_string[value].value_counts()).reset_index(drop=False)
+		new_row = {"index":"NULL", value:df_string[value].isna().sum(),"col":"#595959"}
+		df["col"]=["#85BC22" for x in range(len(df.index))]
+		df = df.append(new_row, ignore_index=True)
 		if df.empty:
 			html=f"The column <b>{test}</b> is completly NULL and has no Unique Values"
 			html = "<center><p style='font-size: 22px'>"+html+"</p></center>"
 			return html
 		langs = df["index"].to_list()
-		data = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list() ])
+		data = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list(),col=df["col"].tolist() ])
 		source = ColumnDataSource(data=data)
 		p = plotting.figure(x_range = langs, sizing_mode="stretch_both",toolbar_location=None, tools="", title="Unique values in Column")
 		p.title.align = "center"
 		p.title.text_font_size = "15px"
 		p.xaxis.major_label_orientation = "vertical"
-		p.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,color ="#85BC22")
+		p.vbar(x = dodge("langs",  0, range=p.x_range), top="unique", width = 0.5,name="unique",source=source,fill_color ="col",line_color="white")
 		hover = HoverTool()
 		hover.tooltips = """<div><div><strong>Element:  </strong>@langs</div><div><strong>Count: </strong>@$name</div></div>"""
 		p.add_tools(hover)
 		html = file_html(p, CDN, "plot")
 		html = "<center>"+html+"</center>"
+		save(p,"C:\\Users\\Niclas\\Development\\PA2\\Tool_Niclas_23.06.2022 (1)\\processed\\SAP_Test_Data_BSEG Table.txt_processed\picture\uniqueSAP_Test_Data_BSEG_Table.html")
 		return html
 if __name__ == "__main__":
 	app = SAP_Test_Data_BSEG_Table()

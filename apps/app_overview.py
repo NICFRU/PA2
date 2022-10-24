@@ -1,17 +1,17 @@
-from matplotlib.pyplot import plot
+
 from spyre import server
-import yfinance as yf
 import pandas as pd
 from math import pi
 import modules.overall_funktions as of
 import pandas as pd
+import os
 
 
 #from bokeh import plotting
 from bokeh import plotting
 from bokeh.transform import cumsum, dodge
 from bokeh.palettes import BuGn,PRGn
-from bokeh.plotting import figure
+from bokeh.plotting import figure,save
 from bokeh.resources import CDN
 from bokeh.embed import file_html
 #from bokeh.models.sources import ColumnDataSource
@@ -47,7 +47,7 @@ class overview(server.App):
     controls = [{
         "type": "button",
         "id": "update_data",
-        "label": "get historical stock prices"
+        "label": "reload the data"
     }]
 
     tabs = ["Table",'Overview_of_the_Table', 'unique','Overview']
@@ -125,6 +125,9 @@ class overview(server.App):
     
     def nullvalues(self, params):
         value = params['values']
+        print(value)
+        label_2 = value.split('\\')[-1].split('.')[0]
+        
         df = of.Data(value)
 
         data = pd.DataFrame({
@@ -166,12 +169,15 @@ class overview(server.App):
 
         #print(source.data)
         html = file_html(p, CDN, "my plot")
-
+        pathnew = os.getcwd()
+        #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
+        save(p,f'{pathnew}\\picture\\nullvalues_{label_2}.html')
         return html
 
     def qol(self, params):
         value = params['values']
+        label_2 = value.split('\\')[-1].split('.')[0]
         pbjekts=of.overview(value)
         types_df=pd.DataFrame(pbjekts['types'].value_counts()).reset_index(drop=False)
         types_df['types']
@@ -202,12 +208,16 @@ class overview(server.App):
         p.grid.grid_line_color = None
 
         html = file_html(p, CDN, "plot")
-
+        pathnew = os.getcwd()
+        #pathnew=pathnew.replace("\\",'\\\\')
+        html = '<center>'+html+'</center>'
+        save(p,f'{pathnew}\\picture\\type_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
     def unique_big(self, params):
         value = params['values']
+        label_2 = value.split('\\')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         #pr=pbjekts[pbjekts['unique']<200]
@@ -234,12 +244,16 @@ class overview(server.App):
         p.add_tools(hover)
 
         html = file_html(p, CDN, "plot")
-
+        pathnew = os.getcwd()
+        #pathnew=pathnew.replace("\\",'\\\\')
+        html = '<center>'+html+'</center>'
+        save(p,f'{pathnew}\\picture\\unique_big_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
     def unique_small(self, params):
         value = params['values']
+        label_2 = value.split('\\')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         pr=pbjekts[pbjekts['unique']<200]
@@ -266,13 +280,17 @@ class overview(server.App):
         p.add_tools(hover)
 
         html = file_html(p, CDN, "plot")
-
+        pathnew = os.getcwd()
+        #pathnew=pathnew.replace("\\",'\\\\')
+        html = '<center>'+html+'</center>'
+        save(p,f'{pathnew}\\picture\\unique_small_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
 
     def column_null(self, params):
         value = params['values']
+        label_2 = value.split('\\')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         NullNotNull = pbjekts.index.to_list()
@@ -299,7 +317,10 @@ class overview(server.App):
         p.add_tools(hover)
 
         html = file_html(p, CDN, "plot")
-
+        pathnew = os.getcwd()
+        #pathnew=pathnew.replace("\\",'\\\\')
+        html = '<center>'+html+'</center>'
+        save(p,f'{pathnew}\\picture\\column_null_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 if __name__ == '__main__':
