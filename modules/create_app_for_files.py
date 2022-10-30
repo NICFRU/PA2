@@ -118,7 +118,7 @@ def app_generator(author,path,file,app_folder='apps'):
 
     fp.write("server.include_df_index = True\n")
     fp.write(f'class {name}(server.App): \n')
-    fp.write(f'\tlink = "{pathnew}"\n')
+    fp.write(f'\tlink = "processed\\{file}"\n')
     fp.write(f'\ttitle = "Overview of the Table {name}"\n')
     fp.write(f"\tinputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]\n\n")
     
@@ -177,7 +177,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.grid.grid_line_color = None\n')
     fp.write('\t\thtml = file_html(p, CDN, "my plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tsave(p,"{pathnew}\\picture\\description_plot_{name}.html")\n')
+    fp.write(f'\t\tsave(p,"picture\\\\description_plot_{name}.html")\n')
     fp.write('\t\treturn html\n\n')
 
 
@@ -198,7 +198,7 @@ def app_generator(author,path,file,app_folder='apps'):
 
 
     fp.write('\t\tlangs = df["index"].to_list()\n')
-    fp.write('\t\tdata = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list(),col=df["col"].tolist() ])\n')
+    fp.write('\t\tdata = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list()],col=df["col"].tolist() )\n')
     fp.write('\t\tsource = ColumnDataSource(data=data)\n')
 
     fp.write('\t\tp = plotting.figure(x_range = langs, sizing_mode="stretch_both",toolbar_location=None, tools="", title="Unique values in Column")\n')
@@ -212,7 +212,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.add_tools(hover)\n')
     fp.write('\t\thtml = file_html(p, CDN, "plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tsave(p,"{pathnew}\\picture\\unique{name}.html")\n')
+    fp.write(f'\t\tsave(p,"picture\\\\unique{name}.html")\n')
     fp.write('\t\treturn html\n')
 
     fp.write('if __name__ == "__main__":\n')

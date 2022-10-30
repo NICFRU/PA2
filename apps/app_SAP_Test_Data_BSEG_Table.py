@@ -38,7 +38,7 @@ import copy
 
 server.include_df_index = True
 class SAP_Test_Data_BSEG_Table(server.App): 
-	link = "C:\\Users\\Niclas\\Development\\PA2\\Tool_Niclas_23.06.2022 (1)\\processed\\SAP_Test_Data_BSEG Table.txt_processed"
+	link = "processed\SAP_Test_Data_BSEG Table.txt_processed"
 	title = "Overview of the Table SAP_Test_Data_BSEG_Table"
 	inputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]
 
@@ -92,7 +92,7 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		p.grid.grid_line_color = None
 		html = file_html(p, CDN, "my plot")
 		html = "<center>"+html+"</center>"
-		save(p,"C:\\Users\\Niclas\\Development\\PA2\\Tool_Niclas_23.06.2022 (1)\\processed\\SAP_Test_Data_BSEG Table.txt_processed\picture\description_plot_SAP_Test_Data_BSEG_Table.html")
+		save(p,"picture\description_plot_SAP_Test_Data_BSEG_Table.html")
 		return html
 
 	def unique(self, params):
@@ -108,7 +108,7 @@ class SAP_Test_Data_BSEG_Table(server.App):
 			html = "<center><p style='font-size: 22px'>"+html+"</p></center>"
 			return html
 		langs = df["index"].to_list()
-		data = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list(),col=df["col"].tolist() ])
+		data = dict(langs = langs,unique   = [ int(x) for x in df[value].to_list()],col=df["col"].tolist() )
 		source = ColumnDataSource(data=data)
 		p = plotting.figure(x_range = langs, sizing_mode="stretch_both",toolbar_location=None, tools="", title="Unique values in Column")
 		p.title.align = "center"
@@ -120,7 +120,7 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		p.add_tools(hover)
 		html = file_html(p, CDN, "plot")
 		html = "<center>"+html+"</center>"
-		save(p,"C:\\Users\\Niclas\\Development\\PA2\\Tool_Niclas_23.06.2022 (1)\\processed\\SAP_Test_Data_BSEG Table.txt_processed\picture\uniqueSAP_Test_Data_BSEG_Table.html")
+		save(p,"picture\\uniqueSAP_Test_Data_BSEG_Table.html")
 		return html
 if __name__ == "__main__":
 	app = SAP_Test_Data_BSEG_Table()
