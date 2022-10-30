@@ -2,7 +2,7 @@
 #***
 #***
 #*** Author:	Niclas Cramer
-#*** Date:	  23 Oct 2022 13:47:44
+#*** Date:	  29 Oct 2022 14:12:52
 #***
 #*** Source:	processed\SAP_Test_Data_GLT0 Table.txt_processed
 #***

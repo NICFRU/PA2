@@ -2,7 +2,7 @@
 #***
 #***
 #*** Author:	Niclas Cramer
-#*** Date:	  23 Oct 2022 13:47:44
+#*** Date:	  29 Oct 2022 14:12:52
 #***
 #*** Source:	C:\Users\Niclas\Development\PA2\Tool_Niclas_23.06.2022 (1)\multi_app.py
 #***

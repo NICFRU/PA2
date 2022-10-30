@@ -1,0 +1,26 @@
+|File|Process|time
+0|SAP_Test_Data_BKPF Table.csv|process|1.1042961
+1|SAP_Test_Data_BKPF Table.txt_processed|app|0.0012997000000001258
+2|SAP_Test_Data_BKPF Table.txt_processed|collection of APP Files|0.0012045000000000528
+3|SAP_Test_Data_BKPF Table|sql|0.008434799999999854
+4|SAP_Test_Data_BKPF Table|complete|1.1202655000000001
+5|SAP_Test_Data_BKPF_Table_for_automation.csv|process|0.053761100000000006
+6|SAP_Test_Data_BKPF_Table_for_automation.txt_processed|app|0.0010655999999999999
+7|SAP_Test_Data_BKPF_Table_for_automation.txt_processed|collection of APP Files|0.0012053000000000758
+8|SAP_Test_Data_BKPF_Table_for_automation|sql|0.0059450999999999254
+9|SAP_Test_Data_BKPF_Table_for_automation|complete|0.06676549999999981
+10|SAP_Test_Data_BSEG Table.csv|process|6.1777396
+11|SAP_Test_Data_BSEG Table.txt_processed|app|0.0041967999999998895
+12|SAP_Test_Data_BSEG Table.txt_processed|collection of APP Files|0.005560199999999682
+13|SAP_Test_Data_BSEG Table|sql|0.02293780000000023
+14|SAP_Test_Data_BSEG Table|complete|6.217620999999999
+15|SAP_Test_Data_GLT0 Table.csv|process|0.5715642000000001
+16|SAP_Test_Data_GLT0 Table.txt_processed|app|0.004225199999998708
+17|SAP_Test_Data_GLT0 Table.txt_processed|collection of APP Files|0.0015551000000009196
+18|SAP_Test_Data_GLT0 Table|sql|0.0093507000000006
+19|SAP_Test_Data_GLT0 Table|complete|0.5920526000000006
+20|SAP_Test_Data_GLT0_Table_for_automation copy.csv|process|0.06867850000000075
+21|SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed|app|0.0010407000000007827
+22|SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed|collection of APP Files|0.0011850999999989398
+23|SAP_Test_Data_GLT0_Table_for_automation copy|sql|0.005351500000001508
+24|SAP_Test_Data_GLT0_Table_for_automation copy|complete|0.0812659

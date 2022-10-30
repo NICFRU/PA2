@@ -18,14 +18,14 @@ Processed lines:	100
 Total skipped lines: 0
 replaced BOM:	0
 End of logging the file, with problems: "SAP_Test_Data_GLT0_Table_for_automation.csv"
-Duration of "SAP_Test_Data_GLT0_Table_for_automation.csv" for processsing: 0.0028177000000013663 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation.csv" for processsing: 0.0032077000000008127 seconds
 ---------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------
 
 created individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed
-End of individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed creation with the needed time: 0.0011623000000007266 seconds 
+End of individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed creation with the needed time: 0.0010695999999992267 seconds 
 
 ---------------------------------------------------------------------------
 
@@ -34,11 +34,11 @@ End of individual APP File SAP_Test_Data_GLT0_Table_for_automation.txt_processed
 
 created collection of APP Files
 
-End of collection of APP Files creation with the needed time: 0.0015013999999986538 seconds 
+End of collection of APP Files creation with the needed time: 0.001157100000000355 seconds 
 
 ---------------------------------------------------------------------------
 
 
-Duration of "SAP_Test_Data_GLT0_Table_for_automation" SQL Creation: 1.0000000010279564e-06 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation" SQL Creation: 5.000000005139782e-07 seconds
 
-Duration of "SAP_Test_Data_GLT0_Table_for_automation" for processsing: 0.006205000000001348 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation" for processsing: 0.014601299999998929 seconds

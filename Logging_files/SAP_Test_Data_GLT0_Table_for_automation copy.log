@@ -35,14 +35,14 @@ Number of elements in the processed file: 99
 Total replaced ": 0
 Deleted lines : []
 End of logging the file, without problems: "SAP_Test_Data_GLT0_Table_for_automation copy.csv"
-Duration of "SAP_Test_Data_GLT0_Table_for_automation copy.csv" for processsing: 0.06882860000000157 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy.csv" for processsing: 0.06867850000000075 seconds
 ---------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------
 
 created individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed
-End of individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed creation with the needed time: 0.001353399999999283 seconds 
+End of individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_processed creation with the needed time: 0.0010407000000007827 seconds 
 
 ---------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ End of individual APP File SAP_Test_Data_GLT0_Table_for_automation copy.txt_proc
 
 created collection of APP Files
 
-End of collection of APP Files creation with the needed time: 0.001362699999999606 seconds 
+End of collection of APP Files creation with the needed time: 0.0011850999999989398 seconds 
 
 ---------------------------------------------------------------------------
 
@@ -64,6 +64,6 @@ created SQL File SAP_Test_Data_GLT0_Table_for_automation copy.sql
 
 
 
-Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" SQL Creation: 0.005559299999999823 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" SQL Creation: 0.005351500000001508 seconds
 
-Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" for processsing: 0.07760509999999954 seconds
+Duration of "SAP_Test_Data_GLT0_Table_for_automation copy" for processsing: 0.0812659 seconds

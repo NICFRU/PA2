@@ -247,7 +247,7 @@ def replace_and_count(df, value, replace_value, null_values):
 # initial funktion, which starts the transformation into a csv file
 
 
-def transform_into_csv(file, skiprow, endencoding, quotechar, separator='|', withheader=1, header='', seper='|', encode='latin-1', new_format='txt_processed', replace_double_quotes=0, replace_new_separator=';', logging_file_name='', processedfoldername='processed', null_values=['#VALUE!', '#DIV/0!'], skiped_values=['#VALUE!', '#DIV/0!'], xlsx=0):
+def transform_into_csv(file, skiprow, endencoding, quotechar, separator='|', withheader=1, header='', seper='|', encode='latin-1', new_format='txt_processed', replace_double_quotes=0, replace_new_separator=';', logging_file_name='', processedfoldername='processed', null_values=['#VALUE!', '#DIV/0!'], skiped_values=['#VALUE!', '#DIV/0!'], xlsx=0,timedf='timedf'):
     start = perf_counter()
     if __name__ != '__main__':
         #if config.py executed, connecting to the logging file
@@ -381,11 +381,14 @@ def transform_into_csv(file, skiprow, endencoding, quotechar, separator='|', wit
         logger.info(f'End of logging the file, without problems: "{filename}"')
         end = perf_counter()
         duration=end - start
+        if __name__ != '__main__':
+            list_row = [filename, 'process', duration]
+            timedf.loc[len(timedf)] = list_row
         logger.info(f'Duration of "{filename}" for processsing: {duration} seconds')
         logger.info(
             '---------------------------------------------------------------------------')
         logger.info("\n")
-        return 0
+        return 0,timedf
     # in the event of an error
     except FileNotFoundError:
         logger.error('Move Data to the Data folder')
@@ -397,7 +400,7 @@ def transform_into_csv(file, skiprow, endencoding, quotechar, separator='|', wit
         # if the number of seperations is wrong
         #logger.error("OS error: {0}".format(err))
 
-        return check_number_of_seperations(file, number_in_first_line(file, separator=separator, encoding=encode), encoding=encode, separator=sepertator, filename=filename, skiprow=skiprow, logger=logger,start=start)
+        return check_number_of_seperations(file, number_in_first_line(file, separator=separator, encoding=encode), encoding=encode, separator=sepertator, filename=filename, skiprow=skiprow, logger=logger,start=start,timedf=timedf)
     except BaseException as err:
         print(f"Unexpected {err=}, {type(err)=}")
         logger.error(f"Unexpected {err=}, {type(err)=}")
@@ -419,7 +422,7 @@ def number_in_first_line(file, separator='|', encoding='utf-8'):
 # processing of the file if an error accrues
 
 
-def check_number_of_seperations(file2, number, filename, logger, separator='|', encoding='utf-8', skiprow=4,start=0):
+def check_number_of_seperations(file2, number, filename, logger, separator='|', encoding='utf-8', skiprow=4,start=0,timedf=''):
     zahl = line_count(file2, separator, encoding=encoding)
     encoding, boom = detect_by_bom(file2, encoding)
     file = open(file2, "r", encoding=encoding)
@@ -456,6 +459,9 @@ def check_number_of_seperations(file2, number, filename, logger, separator='|', 
     logger.info(f'End of logging the file, with problems: "{filename}"')
     end = perf_counter()
     duration=end - start
+    if __name__ != '__main__':
+        list_row = [filename, 'process_error', duration]
+        timedf.loc[len(timedf)] = list_row
     logger.info(f'Duration of "{filename}" for processsing: {duration} seconds')
         
     logger.info(
@@ -466,7 +472,7 @@ def check_number_of_seperations(file2, number, filename, logger, separator='|', 
 
     file.close()
     error = 1
-    return error
+    return error,timedf
 
 # check where the header starts
 

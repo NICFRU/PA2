@@ -84,6 +84,7 @@ import modules.overall_funktions as f
 import logging
 import logging.config
 import os
+import pandas as pd
 from time import perf_counter
 import modules.create_app_for_files as caff
 import modules.create_colective_app_script as ccas
@@ -93,13 +94,15 @@ import modules.create_colective_app_script as ccas
 #------------------------------------------------------------------------------------------------------------------------------#
 ###                                                Funktions                                                                 ###
 
-def create_app(author,processedfoldername,file,app_folder,file_path,overview_name,app_filename):
+def create_app(author,processedfoldername,file,app_folder,file_path,overview_name,app_filename,timedf):
     start_app=perf_counter()
     logger.info('---------------------------------------------------------------------------\n')
     logger.info(f'created individual APP File {file}')
     caff.app_generator(author,processedfoldername,file,app_folder)
     end = perf_counter()
     duration=end - start_app
+    list_row = [file, 'app', duration]
+    timedf.loc[len(timedf)] = list_row
     logger.info(f'End of individual APP File {file} creation with the needed time: {duration} seconds \n')
     logger.info('---------------------------------------------------------------------------\n\n')
     start_app=perf_counter()
@@ -108,9 +111,11 @@ def create_app(author,processedfoldername,file,app_folder,file_path,overview_nam
     ccas.multiple_apps(app_filename,author,file_path,app_folder,overview_name)
     end = perf_counter()
     duration=end - start_app
+    list_row = [file, 'collection of APP Files', duration]
+    timedf.loc[len(timedf)] = list_row
     logger.info(f'End of collection of APP Files creation with the needed time: {duration} seconds \n')
     logger.info('---------------------------------------------------------------------------\n\n')
-
+    return timedf 
 
 
 
@@ -171,7 +176,7 @@ if not os.path.exists(loggingfilepath):
 xlsx=0
 #------------------------------------------------------------------------------------------------------------------------------#
 ###                                                execution                                                                 ###
-
+timedf = pd.DataFrame(columns=['File','Process','time'])
 #executes the funktions for multiple files
 if files==1:
     for file in c.get_file_name(filename=file_extension):
@@ -186,27 +191,37 @@ if files==1:
             pathnew=f.XLSX_to_csv(pathnew)
             file=file.replace('XLSX', 'csv')
             xlsx=1
-        error=c.transform_into_csv(pathnew, c.line_count(pathnew,separator=sepertator,encoding=encoding), endencoding=end_encoding, separator=sepertator, seper=new_separator, encode=encoding, new_format='txt_processed',withheader=withheader,header=header,quotechar=text_qualifier,replace_double_quotes=replace_double_quotes,replace_new_separator=replace_separator,logging_file_name=logging_file_name,processedfoldername=processedfoldername,null_values=null_values,skiped_values=skiped_values,xlsx=xlsx)
+        error,timedf=c.transform_into_csv(pathnew, c.line_count(pathnew,separator=sepertator,encoding=encoding), endencoding=end_encoding, separator=sepertator, seper=new_separator, encode=encoding, new_format='txt_processed',withheader=withheader,header=header,quotechar=text_qualifier,replace_double_quotes=replace_double_quotes,replace_new_separator=replace_separator,logging_file_name=logging_file_name,processedfoldername=processedfoldername,null_values=null_values,skiped_values=skiped_values,xlsx=xlsx,timedf=timedf)
         file=file.split('.')[0] + '.' + new_format.split('.')[len(new_format.split('.'))-1]
         print(error)
-        create_app(author,processedfoldername,file,app_folder,file_path,overview_name,app_filename)
+        timedf=create_app(author,processedfoldername,file,app_folder,file_path,overview_name,app_filename,timedf)
         start_sql=perf_counter()
         if error==0:
             trysql(author,folder_processed ,encoding,file,database,importSchema,prepareSchema,charset,new_separator,linebreak,firstline,codepage,batchsize,sql_folder)
             end = perf_counter()
             duration=end - start_sql
+            list_row = [filedefinition, 'sql', duration]
+            timedf.loc[len(timedf)] = list_row
             logger.info(f'Duration of "{filedefinition}" SQL Creation: {duration} seconds\n')
             end = perf_counter()
             duration=end - start
+       
+            list_row = [filedefinition, 'complete', duration]
+            timedf.loc[len(timedf)] = list_row
             logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
         else:
             end = perf_counter()
             duration=end - start_sql
+            list_row = [filedefinition, 'complete', duration]
+            timedf.loc[len(timedf)] = list_row
             logger.info(f'Duration of "{filedefinition}" SQL Creation: {duration} seconds\n')
             end = perf_counter()
             duration=end - start
+            list_row = [filedefinition, 'complete', duration]
+            timedf.loc[len(timedf)] = list_row
             logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
             pass
+    timedf.to_csv('Logging_files\\time.txt',sep='|')
 ### for individual files 
 else:
     filedefinition=file.split('.')[0]
@@ -219,24 +234,32 @@ else:
         pathnew=f.XLSX_to_csv(pathnew)
         file=file.replace('XLSX', 'csv')
         xlsx=1
-    error=c.transform_into_csv(pathnew, c.line_count(pathnew,separator=sepertator,encoding=encoding), endencoding=end_encoding, separator=sepertator, seper=new_separator, encode=encoding, new_format='txt_processed',withheader=withheader,header=header,quotechar=text_qualifier,replace_double_quotes=replace_double_quotes,replace_new_separator=replace_separator,logging_file_name=logging_file_name,processedfoldername=processedfoldername,null_values=null_values,skiped_values=skiped_values,xlsx=xlsx)
+    error,timedf=c.transform_into_csv(pathnew, c.line_count(pathnew,separator=sepertator,encoding=encoding), endencoding=end_encoding, separator=sepertator, seper=new_separator, encode=encoding, new_format='txt_processed',withheader=withheader,header=header,quotechar=text_qualifier,replace_double_quotes=replace_double_quotes,replace_new_separator=replace_separator,logging_file_name=logging_file_name,processedfoldername=processedfoldername,null_values=null_values,skiped_values=skiped_values,xlsx=xlsx,timedf=timedf)
     file=file.split('.')[0] + '.' + new_format.split('.')[len(new_format.split('.'))-1]
-    create_app(author,folder_processed,file,app_folder,file_path,overview_name,app_filename)
+    timedf=create_app(author,folder_processed,file,app_folder,file_path,overview_name,app_filename,timedf)
     start_sql=perf_counter()
     if error==0:
         trysql(author,folder_processed ,encoding,file,database,importSchema,prepareSchema,charset,new_separator,linebreak,firstline,codepage,batchsize,sql_folder)
         end = perf_counter()
         duration=end - start_sql
+        list_row = [filedefinition, 'sql', duration]
+        timedf.loc[len(timedf)] = list_row
         logger.info(f'Duration of "{filedefinition}" SQL Creation: {duration} seconds\n')
         end = perf_counter()
         duration=end - start
+        list_row = [filedefinition, 'complete', duration]
+        timedf.loc[len(timedf)] = list_row
         logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
     else:
         end = perf_counter()
         duration=end - start_sql
+        list_row = [filedefinition, 'sql', duration]
+        timedf.loc[len(timedf)] = list_row
         logger.info(f'Duration of "{filedefinition}" SQL Creation: {duration} seconds\n')
         end = perf_counter()
         duration=end - start
+        list_row = [filedefinition, 'complete', duration]
+        timedf.loc[len(timedf)] = list_row
         logger.info(f'Duration of "{filedefinition}" for processsing: {duration} seconds')
         pass
    

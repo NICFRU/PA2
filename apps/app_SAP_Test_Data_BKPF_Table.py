@@ -2,7 +2,7 @@
 #***
 #***
 #*** Author:	Niclas Cramer
-#*** Date:	  23 Oct 2022 13:47:37
+#*** Date:	  29 Oct 2022 14:12:45
 #***
 #*** Source:	processed\SAP_Test_Data_BKPF Table.txt_processed
 #***

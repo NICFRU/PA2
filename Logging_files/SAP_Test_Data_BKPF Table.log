@@ -35,14 +35,14 @@ Number of elements in the processed file: 2500
 Total replaced ": 0
 Deleted lines : []
 End of logging the file, without problems: "SAP_Test_Data_BKPF Table.csv"
-Duration of "SAP_Test_Data_BKPF Table.csv" for processsing: 1.1264123000000001 seconds
+Duration of "SAP_Test_Data_BKPF Table.csv" for processsing: 1.1042961 seconds
 ---------------------------------------------------------------------------
 
 
 ---------------------------------------------------------------------------
 
 created individual APP File SAP_Test_Data_BKPF Table.txt_processed
-End of individual APP File SAP_Test_Data_BKPF Table.txt_processed creation with the needed time: 0.0012687999999998478 seconds 
+End of individual APP File SAP_Test_Data_BKPF Table.txt_processed creation with the needed time: 0.0012997000000001258 seconds 
 
 ---------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ End of individual APP File SAP_Test_Data_BKPF Table.txt_processed creation with 
 
 created collection of APP Files
 
-End of collection of APP Files creation with the needed time: 0.0012054000000001341 seconds 
+End of collection of APP Files creation with the needed time: 0.0012045000000000528 seconds 
 
 ---------------------------------------------------------------------------
 
@@ -64,6 +64,6 @@ created SQL File SAP_Test_Data_BKPF Table.sql
 
 
 
-Duration of "SAP_Test_Data_BKPF Table" SQL Creation: 0.008258099999999935 seconds
+Duration of "SAP_Test_Data_BKPF Table" SQL Creation: 0.008434799999999854 seconds
 
-Duration of "SAP_Test_Data_BKPF Table" for processsing: 1.1377773 seconds
+Duration of "SAP_Test_Data_BKPF Table" for processsing: 1.1202655000000001 seconds
