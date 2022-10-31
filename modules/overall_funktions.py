@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-
+from sys import platform
 
 def XLSX_to_csv(filename):
     read_file = pd.read_excel(filename, dtype=str)
@@ -31,11 +31,11 @@ def filepath(filename, foldername):
         # print(0)
         d = os.getcwd()
         #print('Nein: ',d)
-    outdir = d+f'\\{foldername}'
+    outdir = d+f'/{foldername}'
     # print(outdir)
     if not os.path.exists(outdir):
         os.mkdir(outdir)
-    return f'{outdir}\\{filename}'
+    return f'{outdir}/{filename}'
 
 
 def get_files_in_folder(extension, folder):
@@ -142,3 +142,10 @@ def app_files(filename='.py'):
             if file.endswith(filename):
                 name_list.append(file)
     return name_list
+
+
+def platform():
+    if platform == "darwin":
+        return '/'
+    elif platform == "win32":
+        return '\\'

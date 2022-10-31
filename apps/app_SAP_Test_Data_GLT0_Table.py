@@ -38,7 +38,7 @@ import copy
 
 server.include_df_index = True
 class SAP_Test_Data_GLT0_Table(server.App): 
-	link = "processed\SAP_Test_Data_GLT0 Table.txt_processed"
+	link = "processed/SAP_Test_Data_GLT0 Table.txt_processed"
 	title = "Overview of the Table SAP_Test_Data_GLT0_Table"
 	inputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]
 

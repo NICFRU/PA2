@@ -36,6 +36,7 @@ from base64 import encode
 from datetime import datetime
 import re
 import os
+from sys import platform
 if __name__=='__main__':
     import overall_funktions as f
 else:
@@ -51,7 +52,8 @@ def filepath(filename,foldername):
         d=os.path.normpath(os.getcwd() + os.sep + os.pardir)
     else: 
         d=os.getcwd()
-    outdir = d+f'\\{foldername}'
+    slash=f.platform
+    outdir = d+f'{slash}{foldername}'
     if not os.path.exists(outdir):
         os.mkdir(outdir)
         #print('Ja')
@@ -64,11 +66,13 @@ def app_generator(author,path,file,app_folder='apps'):
     now = datetime.now()
     date = now.strftime("%d %b %Y %X")
     pathnew = filepath(fr'{file}', path)
-    pathnew=pathnew.replace("\\",'\\\\')
+    if platform == 'win32':
+        pathnew=pathnew.replace("\\",'\\\\')
     script_split =  file.split(".")
     name=script_split[0].replace(" ","_")
     script = "app_" + name + ".py"
-    print ('-----\nCreating App script for ' + path + '\\' + file + '\n')
+    slash=f.platform
+    print ('-----\nCreating App script for ' + path + slash + file + '\n')
     print(filepath(script,app_folder))
     #check if the files exists in the processed folder
     fp = open( filepath(script,app_folder), 'w', encoding='utf8') or die ("Could not open file $!") 
@@ -81,7 +85,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('#*** Author:	' + author + '\n')
     fp.write('#*** Date:	  ' + date + '\n')
     fp.write('#***\n')
-    fp.write('#*** Source:	' + path + '\\' + file + '\n')
+    fp.write('#*** Source:	' + path + slash + file + '\n')
     fp.write('#***\n')
     fp.write('#*** Topic:	Automatically generated app script.\n')
     fp.write('#***\n')
@@ -96,6 +100,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write("from spyre import server\n")
     fp.write('import pandas as pd\n')
     fp.write("from math import pi\n")
+    fp.write("from sys import platform")
     fp.write('import modules.overall_funktions as of\n\n')
 
     fp.write('#/******************************************/\n')
@@ -118,7 +123,10 @@ def app_generator(author,path,file,app_folder='apps'):
 
     fp.write("server.include_df_index = True\n")
     fp.write(f'class {name}(server.App): \n')
-    fp.write(f'\tlink = "processed\\{file}"\n')
+    fp.write(f'\tif platform =="darwin"  \n')
+     fp.write(f'\t\tlink = "processed/{file}"\n')
+    fp.write(f'\telif platform =="win32"  \n')
+    fp.write(f'\t\tlink = "processed\\\\{file}"\n')
     fp.write(f'\ttitle = "Overview of the Table {name}"\n')
     fp.write(f"\tinputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]\n\n")
     
@@ -177,7 +185,10 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.grid.grid_line_color = None\n')
     fp.write('\t\thtml = file_html(p, CDN, "my plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tsave(p,"picture\\\\description_plot_{name}.html")\n')
+    fp.write(f'\t\tif platform =="darwin"  \n')
+    fp.write(f'\t\t\tsave(p,"picture/description_plot_{name}.html")\n')
+    fp.write(f'\t\telif platform =="win32"  \n')
+    fp.write(f'\t\t\tsave(p,"picture\\description_plot_{name}.html")\n')
     fp.write('\t\treturn html\n\n')
 
 
@@ -212,7 +223,10 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.add_tools(hover)\n')
     fp.write('\t\thtml = file_html(p, CDN, "plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tsave(p,"picture\\\\unique{name}.html")\n')
+    fp.write(f'\t\tif platform =="darwin"  \n')
+    fp.write(f'\t\t\tsave(p,"picture/unique{name}.html")\n')
+    fp.write(f'\t\telif platform =="win32"  \n')
+    fp.write(f'\t\t\tsave(p,"picture\\\\unique{name}.html")\n')
     fp.write('\t\treturn html\n')
 
     fp.write('if __name__ == "__main__":\n')

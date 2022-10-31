@@ -38,7 +38,7 @@ import copy
 
 server.include_df_index = True
 class SAP_Test_Data_BKPF_Table_for_automation(server.App): 
-	link = "processed\\SAP_Test_Data_BKPF_Table_for_automation.txt_processed"
+	link = "/Users/niclascramer/Dev/Neu/PA2/processed/SAP_Test_Data_BKPF_Table_for_automation.txt_processed"
 	title = "Overview of the Table SAP_Test_Data_BKPF_Table_for_automation"
 	inputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]
 

@@ -126,7 +126,7 @@ class overview(server.App):
     def nullvalues(self, params):
         value = params['values']
         print(value)
-        label_2 = value.split('\\')[-1].split('.')[0]
+        label_2 = value.split('/')[-1].split('.')[0]
         
         df = of.Data(value)
 
@@ -172,12 +172,12 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}\\picture\\nullvalues_{label_2}.html')
+        save(p,f'{pathnew}/picture/nullvalues_{label_2}.html')
         return html
 
     def qol(self, params):
         value = params['values']
-        label_2 = value.split('\\')[-1].split('.')[0]
+        label_2 = value.split('/')[-1].split('.')[0]
         pbjekts=of.overview(value)
         types_df=pd.DataFrame(pbjekts['types'].value_counts()).reset_index(drop=False)
         types_df['types']
@@ -211,13 +211,13 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}\\picture\\type_{label_2}.html')
+        save(p,f'{pathnew}/picture/type_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
     def unique_big(self, params):
         value = params['values']
-        label_2 = value.split('\\')[-1].split('.')[0]
+        label_2 = value.split('/')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         #pr=pbjekts[pbjekts['unique']<200]
@@ -247,13 +247,13 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}\\picture\\unique_big_{label_2}.html')
+        save(p,f'{pathnew}/picture/unique_big_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
     def unique_small(self, params):
         value = params['values']
-        label_2 = value.split('\\')[-1].split('.')[0]
+        label_2 = value.split('/')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         pr=pbjekts[pbjekts['unique']<200]
@@ -283,14 +283,14 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}\\picture\\unique_small_{label_2}.html')
+        save(p,f'{pathnew}/picture/unique_small_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
 
     def column_null(self, params):
         value = params['values']
-        label_2 = value.split('\\')[-1].split('.')[0]
+        label_2 = value.split('/')[-1].split('.')[0]
         pbjekts=of.overview(value)
         
         NullNotNull = pbjekts.index.to_list()
@@ -320,7 +320,7 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}\\picture\\column_null_{label_2}.html')
+        save(p,f'{pathnew}/picture/column_null_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 if __name__ == '__main__':
