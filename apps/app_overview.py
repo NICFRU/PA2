@@ -5,7 +5,7 @@ from math import pi
 import modules.overall_funktions as of
 import pandas as pd
 import os
-
+from sys import platform
 
 #from bokeh import plotting
 from bokeh import plotting
@@ -172,7 +172,10 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}/picture/nullvalues_{label_2}.html')
+        if platform == 'darwin':
+            save(p,f'picture/nullvalues_{label_2}.html')
+        elif platform == 'win32':
+            save(p,f'picture\\nullvalues_{label_2}.html')
         return html
 
     def qol(self, params):
@@ -211,7 +214,10 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}/picture/type_{label_2}.html')
+        if platform == 'darwin':
+            save(p,f'picture/type_{label_2}.html')
+        elif platform == 'win32':
+            save(p,f'picture\\type_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
@@ -247,7 +253,10 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}/picture/unique_big_{label_2}.html')
+        if platform == 'darwin':
+            save(p,f'picture/unique_big_{label_2}.html')
+        elif platform == 'win32':
+            save(p,f'picture\\unique_big_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
@@ -283,7 +292,10 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}/picture/unique_small_{label_2}.html')
+        if platform == 'darwin':
+            save(p,f'picture/unique_small_{label_2}.html')
+        elif platform == 'win32':
+            save(p,f'picture\\unique_small_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 
@@ -320,7 +332,10 @@ class overview(server.App):
         pathnew = os.getcwd()
         #pathnew=pathnew.replace("\\",'\\\\')
         html = '<center>'+html+'</center>'
-        save(p,f'{pathnew}/picture/column_null_{label_2}.html')
+        if platform == 'darwin':
+            save(p,f'picture/column_null_{label_2}.html')
+        elif platform == 'win32':
+            save(p,f'picture\\column_null_{label_2}.html')
         html = '<center>'+html+'</center>'
         return html
 if __name__ == '__main__':

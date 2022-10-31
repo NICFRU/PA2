@@ -124,7 +124,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write("server.include_df_index = True\n")
     fp.write(f'class {name}(server.App): \n')
     fp.write(f'\tif platform =="darwin"  \n')
-     fp.write(f'\t\tlink = "processed/{file}"\n')
+    fp.write(f'\t\tlink = "processed/{file}"\n')
     fp.write(f'\telif platform =="win32"  \n')
     fp.write(f'\t\tlink = "processed\\\\{file}"\n')
     fp.write(f'\ttitle = "Overview of the Table {name}"\n')

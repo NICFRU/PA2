@@ -19,7 +19,7 @@ from spyre import server
 import pandas as pd
 from math import pi
 import modules.overall_funktions as of
-
+from sys import platform
 #/******************************************/
 #/***            Bokeh imports    	***/
 #/******************************************/
@@ -38,7 +38,10 @@ import copy
 
 server.include_df_index = True
 class SAP_Test_Data_BSEG_Table(server.App): 
-	link = "processed/SAP_Test_Data_BSEG Table.txt_processed"
+	if platform == 'darwin':
+		link = "processed/SAP_Test_Data_BSEG Table.txt_processed"
+	elif platform == 'win32':
+		link = "processed\\SAP_Test_Data_BSEG Table.txt_processed"
 	title = "Overview of the Table SAP_Test_Data_BSEG_Table"
 	inputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]
 
@@ -92,7 +95,10 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		p.grid.grid_line_color = None
 		html = file_html(p, CDN, "my plot")
 		html = "<center>"+html+"</center>"
-		save(p,"picture\description_plot_SAP_Test_Data_BSEG_Table.html")
+		if platform == 'darwin':
+			save(p,"picture/description_plot_SAP_Test_Data_BSEG_Table.html")
+		elif platform == 'win32':
+			save(p,"picture\\description_plot_SAP_Test_Data_BSEG_Table.html")
 		return html
 
 	def unique(self, params):
@@ -120,7 +126,10 @@ class SAP_Test_Data_BSEG_Table(server.App):
 		p.add_tools(hover)
 		html = file_html(p, CDN, "plot")
 		html = "<center>"+html+"</center>"
-		save(p,"picture\\uniqueSAP_Test_Data_BSEG_Table.html")
+		if platform == 'darwin':
+			save(p,"picture/uniqueSAP_Test_Data_BSEG_Table.html")
+		elif platform == 'win32':
+			save(p,"picture\\uniqueSAP_Test_Data_BSEG_Table.html")
 		return html
 if __name__ == "__main__":
 	app = SAP_Test_Data_BSEG_Table()
