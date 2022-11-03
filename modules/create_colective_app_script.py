@@ -40,7 +40,7 @@ def app_files(filename='.py'):
     # else:
     cwd = os.getcwd()
     cwd=f'{cwd}\\apps'
-    print(cwd)
+    #print(cwd)
     
     for root, dirs, files in os.walk(cwd):
         for file in files:
@@ -67,7 +67,7 @@ def multiple_apps(filename,author,file_path,app_folder,overview_name):
     
     print (f'-----\nCreating App script for {filename}\n')
     script=os.path.join(file_path, filename)  
-    print(script)
+    #print(script)
     #check if the files exists in the processed folder
     fp = open( script, 'w', encoding='utf8') or die ("Could not open file $!") 
 

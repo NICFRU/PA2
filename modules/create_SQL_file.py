@@ -19,22 +19,22 @@
 ###
 
 
-author = "Myroslava Blitstein"
+author = "Niclas Cramer"
 
-#   path to the place of the file directory without trailing backslash ???  old: Y:\DA Forensic\Projects\Crown\_Data Transformation&Import\Batch 22.02.2022\BKPF\Data
-path = r"C:\Meine_daten\Deloitte\Arbeit\Worx\UTF8"  
+#   path to the place of the file directory 
+path = r"processed"  
         # If it is in the place of this script also possible os.getcwd() 
 
 sqlfolder='sql_files'                                       # folder where the import scripts will be saved  
 encoding='UTF-8'                                            #encoding of the input file like UTF16-LE, UTF-8 format or ASCII/ Latin-1 or...
 countRows = 1                                               #count rows in source file for control totals
 
-datafile = f"KNB1.txt_processed"                            # name of the input file
-database = "[DU00545_Worx_SRC]"                             # the destination database (needs to be created before importing)
+datafile = f"SAP_Test_Data_BKPF Table.txt_processed"                            # name of the input file
+database = "Test"                             # the destination database (needs to be created before importing)
 importSchema = "import"                                     #the destination schema for the file
 prepareSchema = "transform"                                 #the preparation schema for the file
 
-table = 'KNB1'                                              #the destination table name
+table = 'SAP_Test_Data_BKPF'                                              #the destination table name
 header = []                                                 # header if needed 
 ersteZeile = ""                                                         
 

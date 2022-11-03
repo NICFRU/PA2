@@ -18,7 +18,9 @@
 ### Variables definition:
 ###
 
+files=0                                   #the input file can be a single file (0) or a bunch of files (1)
 
+file='SAP_Test_Data_BKPF Table.txt_processed'                    # if input file is be a single file when files=0
 #   path to the place of the file directory without trailing backslash ???  old: Y:\DA Forensic\Projects\Crown\_Data Transformation&Import\Batch 22.02.2022\{name}\Data
 path = "processed"  
         # If it is in the place of this script also possible os.getcwd() 
@@ -26,6 +28,9 @@ path = "processed"
 app_folder='app'                                       # folder where the import scripts will be saved  
 file_extension='txt_processed'  
 author='Niclas Cramer'
+files=0                                   #the input file can be a single file (0) or a bunch of files (1)
+
+
 
 
 ########################################################################################################################################################################################
@@ -52,7 +57,7 @@ def filepath(filename,foldername):
         d=os.path.normpath(os.getcwd() + os.sep + os.pardir)
     else: 
         d=os.getcwd()
-    slash=f.platform
+    slash=f.platforming()
     outdir = d+f'{slash}{foldername}'
     if not os.path.exists(outdir):
         os.mkdir(outdir)
@@ -65,13 +70,13 @@ def app_generator(author,path,file,app_folder='apps'):
     
     now = datetime.now()
     date = now.strftime("%d %b %Y %X")
-    pathnew = filepath(fr'{file}', path)
+    pathnew = filepath(fr'{file}', app_folder)
     if platform == 'win32':
         pathnew=pathnew.replace("\\",'\\\\')
     script_split =  file.split(".")
     name=script_split[0].replace(" ","_")
     script = "app_" + name + ".py"
-    slash=f.platform
+    slash=f.platforming()
     print ('-----\nCreating App script for ' + path + slash + file + '\n')
     print(filepath(script,app_folder))
     #check if the files exists in the processed folder
@@ -100,7 +105,7 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write("from spyre import server\n")
     fp.write('import pandas as pd\n')
     fp.write("from math import pi\n")
-    fp.write("from sys import platform")
+    fp.write("from sys import platform\n")
     fp.write('import modules.overall_funktions as of\n\n')
 
     fp.write('#/******************************************/\n')
@@ -123,9 +128,9 @@ def app_generator(author,path,file,app_folder='apps'):
 
     fp.write("server.include_df_index = True\n")
     fp.write(f'class {name}(server.App): \n')
-    fp.write(f'\tif platform =="darwin"  \n')
+    fp.write(f'\tif platform =="darwin":  \n')
     fp.write(f'\t\tlink = "processed/{file}"\n')
-    fp.write(f'\telif platform =="win32"  \n')
+    fp.write(f'\telif platform =="win32":  \n')
     fp.write(f'\t\tlink = "processed\\\\{file}"\n')
     fp.write(f'\ttitle = "Overview of the Table {name}"\n')
     fp.write(f"\tinputs = [dict(type= 'dropdown',label= 'Inputs',options= of.columns(link),value= 'BSEG',key= 'values',action_id= 'update_data')]\n\n")
@@ -185,9 +190,9 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.grid.grid_line_color = None\n')
     fp.write('\t\thtml = file_html(p, CDN, "my plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tif platform =="darwin"  \n')
+    fp.write(f'\t\tif platform =="darwin":  \n')
     fp.write(f'\t\t\tsave(p,"picture/description_plot_{name}.html")\n')
-    fp.write(f'\t\telif platform =="win32"  \n')
+    fp.write(f'\t\telif platform =="win32":  \n')
     fp.write(f'\t\t\tsave(p,"picture\\description_plot_{name}.html")\n')
     fp.write('\t\treturn html\n\n')
 
@@ -223,9 +228,9 @@ def app_generator(author,path,file,app_folder='apps'):
     fp.write('\t\tp.add_tools(hover)\n')
     fp.write('\t\thtml = file_html(p, CDN, "plot")\n')
     fp.write('\t\thtml = "<center>"+html+"</center>"\n')
-    fp.write(f'\t\tif platform =="darwin"  \n')
+    fp.write(f'\t\tif platform =="darwin":  \n')
     fp.write(f'\t\t\tsave(p,"picture/unique{name}.html")\n')
-    fp.write(f'\t\telif platform =="win32"  \n')
+    fp.write(f'\t\telif platform =="win32":  \n')
     fp.write(f'\t\t\tsave(p,"picture\\\\unique{name}.html")\n')
     fp.write('\t\treturn html\n')
 
@@ -242,6 +247,9 @@ def app_generator(author,path,file,app_folder='apps'):
     print ("\n")
 
 if __name__=='__main__':
-    for file in f.get_file_name(filename=file_extension):
-        print(file)
+    if files:
+        for file in f.get_file_name(filename=file_extension):
+            print(file)
+            app_generator(author,path,file,app_folder)
+    else:
         app_generator(author,path,file,app_folder)

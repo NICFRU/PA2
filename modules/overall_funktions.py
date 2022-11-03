@@ -144,7 +144,7 @@ def app_files(filename='.py'):
     return name_list
 
 
-def platform():
+def platforming():
     if platform == "darwin":
         return '/'
     elif platform == "win32":
