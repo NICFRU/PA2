@@ -23,23 +23,28 @@
 from datetime import datetime
 from importlib.resources import path
 import os
+from sys import platform
 
 
 ### Variables definition:             
 ###
-file_path= os.getcwd()
-filename='multi_app.py'
-author='Niclas Cramer'
-app_folder='apps'
-overview_name='overview'
+file_path= os.getcwd()      # path where the collected file is located 
+filename='multi_app.py'     # name of the collected filename 
+author='Niclas Cramer'   
+app_folder='apps'           # folder of the app files which are combined into one collected file
+overview_name='overview'    # name of the overview file
 
+# file list of the files in the app_folder
 def app_files(filename='.py'):
     name_list = []
     # if __name__=='__main__':
     #     cwd =os.path.normpath(os.getcwd() + os.sep + os.pardir)
     # else:
     cwd = os.getcwd()
-    cwd=f'{cwd}\\apps'
+    if platform == 'darwin':
+        cwd=f'{cwd}/apps'
+    elif platform == 'win32':
+        cwd=f'{cwd}\\apps'
     #print(cwd)
     
     for root, dirs, files in os.walk(cwd):
@@ -48,12 +53,16 @@ def app_files(filename='.py'):
                 name_list.append(file)
     return name_list
 
+
 def filepath(filename,foldername):
     if __name__=='__main__':
         d=os.path.normpath(os.getcwd() + os.sep + os.pardir)
     else: 
         d=os.getcwd()
-    outdir = d+f'\\{foldername}'
+    if platform == 'darwin':
+        outdir = d+f'/{foldername}'
+    elif platform == 'win32':
+        outdir = d+f'\\{foldername}'
     if not os.path.exists(outdir):
         os.mkdir(outdir)
         #print('Ja')

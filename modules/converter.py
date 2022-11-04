@@ -1,5 +1,5 @@
 ### Author:    Niclas Cramer
-### Date:      18 June  2022
+### Date:      4 November   2022
 ### 
 ### Function: 
 ###            1. Converting a raw data file into a processed file  
@@ -27,14 +27,14 @@ files=0                                   #the input file can be a single file (
 
 file='SAP_Test_Data_BKPF Table.XLSX'                    # if input file is be a single file when files=0
 
-file_extension='.txt'                       # if input are a bunch of files that will be executed files=1
+file_extension='.txt'                       # Extension which identifies files that will be executed if files = 1
 # -------------- general definitions ---------------------- # 
 
 startingfile='RawData'                      # Defines the folder where the raw data is located   
 new_format ='txt_processed'                 # new data format
 processedfoldername='processed'             # Folder where the processed files will be saved
 
-encoding= 'UTF-8'                         # encoding of the file, like UTF-8, Latin-1 or UTF-16
+encoding= 'UTF-8'                         # encoding of the file, like UTF-8, Latin-1 or UTF-16 of the file
 end_encoding='UTF-8'                      # not recommended to have different encoding than start encoding
 
 sepertator='|'                              # separator of the file

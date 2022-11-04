@@ -18,17 +18,17 @@
 ### Variables definition:
 ###
 
-files=0                                   #the input file can be a single file (0) or a bunch of files (1)
+files=0                                                 #the input file can be a single file (0) or a bunch of files (1)
 
-file='SAP_Test_Data_BKPF Table.txt_processed'                    # if input file is be a single file when files=0
-#   path to the place of the file directory without trailing backslash ???  old: Y:\DA Forensic\Projects\Crown\_Data Transformation&Import\Batch 22.02.2022\{name}\Data
-path = "processed"  
-        # If it is in the place of this script also possible os.getcwd() 
+file='SAP_Test_Data_BKPF Table.txt_processed'           # name if the single file 
 
-app_folder='app'                                       # folder where the import scripts will be saved  
-file_extension='txt_processed'  
+path = "processed"                                      #   path/ folder where the input data is located
+
+
+app_folder='app'                                        # folder where the import scripts will be saved  
+file_extension='txt_processed'                          #  Extension which identifies files that will be executed if files = 1
 author='Niclas Cramer'
-files=0                                   #the input file can be a single file (0) or a bunch of files (1)
+files=0                                                 #the input file can be a single file (0) or a bunch of files (1)
 
 
 
@@ -247,9 +247,11 @@ def app_generator(author,path,file,app_folder='apps'):
     print ("\n")
 
 if __name__=='__main__':
+    # execute mutliple files
     if files:
         for file in f.get_file_name(filename=file_extension):
             print(file)
             app_generator(author,path,file,app_folder)
+    #execute a single file
     else:
         app_generator(author,path,file,app_folder)
