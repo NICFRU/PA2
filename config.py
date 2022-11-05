@@ -24,7 +24,7 @@
 #----------------------------------------------------------------------for converter.py--------------------------------------------------------------------#
 author = "Niclas Cramer"
 
-files=0                                   #the input file can be a single file (0) or a bunch of files (1)
+files=1                                   #the input file can be a single file (0) or a bunch of files (1)
 
 file='SAP_Test_Data_GLT0 Table.XLSX'                    # if input file is be a single file when files=0
 
